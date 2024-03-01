@@ -1,36 +1,36 @@
 name: Playwright Tests
 on:
   push:
-    branches: [main]
+    branches: [ main, master ]
   pull_request:
-    branches: [main]
+    branches: [ main, master ]
   schedule:
-    - cron: "0 15 * * *" # Cron schedule to trigger workflow at a specific time
+    - cron: "0 15 * * *"  # Cron schedule to trigger workflow at a specific time
 jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: windows-2019
+    test:
+      timeout-minutes: 60
+      runs-on: ubuntu-latest
 
-    steps:
-
-      - uses: actions/setup-node@v2
+      steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run env:stg collection.test.ts
+        run: npm run test-ci
 
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
-          path: ./playwright-report
+          path: playwright-report/
           retention-days: 30
 
       - name: Deploy to GitHub Pages
