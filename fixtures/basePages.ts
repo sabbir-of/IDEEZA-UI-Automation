@@ -14,6 +14,7 @@ import { Page } from "@playwright/test";
 import functions from "@testData/helper";
 import testData from "@testData/testData";
 import metaMaskPage from "@pages/metamask.page";
+import CollectionPage from "pages/admin/Collection.page";
 
 let page: Page;
 const test = base.extend<{
@@ -24,6 +25,7 @@ const test = base.extend<{
     componentPage: componentPage;
     newProjectPage: newProjectPage;
     metaMaskPage: metaMaskPage;
+    collectionPage: CollectionPage
     // metaMaskPage: coll;
 
 
@@ -49,6 +51,11 @@ const test = base.extend<{
     metaMaskPage: async ({ page }, use) => {
         await use(new metaMaskPage(page));
     },
+
+    collectionPage: async ({ page }, use) => {
+        await use(new CollectionPage(page));
+    },
+
 
 
 

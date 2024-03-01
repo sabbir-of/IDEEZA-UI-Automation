@@ -1,2 +1,0 @@
-# IDEEZA-UI-Automation
- 

@@ -36,7 +36,8 @@ const config: PlaywrightTestConfig = {
     "auth.setup.ts",
 
     "collection.test.ts",
-    "demo.test.ts"
+    "campaignCreate.test.ts"
+    // "demo.test.ts"
 
 
   ],
@@ -49,21 +50,21 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
 
-  // reporter: process.env.CI ? [["junit", {
-  //   outputFile: "results.xml"
-  // }]] : [["json", {
-  //   outputFile: "report.json"
-  // }], ["html", {
-  //   open: "never"
-  // }]],
+  reporter: process.env.CI ? [["junit", {
+    outputFile: "results.xml"
+  }]] : [["json", {
+    outputFile: "report.json"
+  }], ["html", {
+    open: "never"
+  }]],
 
   // reporter: [ ['html', { outputFolder: './playwright-report/'+ ReportDate}]],
 
 
 
-  reporter: [["html", {
-    open: "never"
-  }], ['./My-Reporter.js']],
+  // reporter: [["html", {
+  //   open: "never"
+  // }], ['./My-Reporter.js']],
 
   // globalTeardown: require.resolve("./mailer.ts"),
 
@@ -73,7 +74,7 @@ const config: PlaywrightTestConfig = {
   use: {
     actionTimeout: 10 * 6000,
     navigationTimeout: 30 * 7000,
-    baseURL: "https://frontdev.ideeza.com/",
+    baseURL: process.env.BASE_URL,
     launchOptions: {
       args: [
         '--use-fake-device-for-media-stream',
@@ -102,30 +103,30 @@ const config: PlaywrightTestConfig = {
 
     // storageState: "./auth.json",
     // actionTimeout: 2 * 60 * 1000,
-    trace: process.env.CI ? "retain-on-failure" : "retain-on-failure",
+    trace: process.env.CI ? "off" : "off",
     video: process.env.CI ? "off" : "off",
     screenshot: process.env.CI ? "on" : "on",
   },
 
   //                                 ^
   //                                 Provide types for the "option" fixture
-  projects: [
-    {
-      use: {
+  // projects: [
+  //   {
+  //     use: {
 
 
-        // storageState: "./auth.json",
-        baseURL: "https://frontdev.ideeza.com/",
-        browserName: 'chromium',
-        channel: 'chrome',
-        viewport: { width: 1700, height: 920 },
-        headless: process.env.CI ? true : false,
+  //       // storageState: "./auth.json",
+  //       baseURL: "https://frontdev.ideeza.com/",
+  //       browserName: 'chromium',
+  //       channel: 'chrome',
+  //       viewport: { width: 1700, height: 920 },
+  //       headless: process.env.CI ? true : false,
 
-        // ^
-        // Provide the paths to one or more extensions. On MacOS, spaces in paths are handled OK.
-      },
-    },
-  ],
+  //       // ^
+  //       // Provide the paths to one or more extensions. On MacOS, spaces in paths are handled OK.
+  //     },
+  //   },
+  // ],
 };
 
 export default config;
