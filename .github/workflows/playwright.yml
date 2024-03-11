@@ -36,10 +36,9 @@ jobs:
       - name: Deploy to GitHub Pages
         if: always()
         uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:           
             BRANCH: gh-pages
-            folder: playwright-report
+            folder: playwright-report/
 
 
 
