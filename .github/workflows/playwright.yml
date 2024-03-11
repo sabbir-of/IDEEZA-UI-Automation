@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
   schedule:
     - cron: "0 15 * * *"  # Cron schedule to trigger workflow at a specific time
 jobs:
@@ -26,19 +26,16 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:stg collection.test.ts
 
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
-
+          # Upload entire repository
+          path: test-merge-report-demo/
       - name: Deploy to GitHub Pages
-        if: always()
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:           
-            BRANCH: gh-pages
-            folder: playwright-report
+        id: deployment
+        uses: actions/deploy-pages@v1
 
 
 
