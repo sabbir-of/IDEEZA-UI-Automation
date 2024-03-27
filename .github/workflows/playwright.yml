@@ -18,10 +18,10 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '14'  # Specify the Node.js version
+        node-version: '18'  # Specify the Node.js version
 
     - name: Install dependencies
-      run: npm install  # Install dependencies including Playwright
+      run: npm ci  # Install dependencies including Playwright
 
     - name: Run Playwright tests
       run: npm run test:stg collection.test.ts  # Replace with your test script
