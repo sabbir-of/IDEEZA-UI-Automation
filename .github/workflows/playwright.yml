@@ -38,4 +38,4 @@ jobs:
       if: success()  # Only deploy if previous steps were successful
       with:
         branch: gh-pages  # The branch the action should deploy to.
-        folder: playwright-reports  # The folder the action should deploy.
+        folder: ./playwright-report  # The folder the action should deploy.
