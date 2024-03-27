@@ -31,11 +31,11 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
+#          GITHUB_TOKEN: "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"
           # Upload entire repository
-          path: test-merge-report-demo/
+          path: ./playwright-report
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
 
 
