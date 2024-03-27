@@ -31,11 +31,11 @@ jobs:
       if: always()  # Always upload reports, even if tests fail
       with:
         name: playwright-reports
-        path: path/to/reports  # Replace with the path to your reports
+        path: ./playwright-report  # Replace with the path to your reports
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.4
       if: success()  # Only deploy if previous steps were successful
       with:
         branch: gh-pages  # The branch the action should deploy to.
-        folder: path/to/reports  # The folder the action should deploy.
+        folder: ./playwright-report  # The folder the action should deploy.
