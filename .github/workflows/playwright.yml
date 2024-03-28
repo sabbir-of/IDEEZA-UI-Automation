@@ -34,7 +34,7 @@ jobs:
         path: playwright-reports  # Replace with the path to your reports
 
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.4
+      uses: crazy-max/ghaction-github-pages@v2
       if: success()  # Only deploy if previous steps were successful
       with:
         branch: gh-pages  # The branch the action should deploy to.
