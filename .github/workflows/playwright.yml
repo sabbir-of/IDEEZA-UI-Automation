@@ -33,9 +33,9 @@ jobs:
         mkdir -p generated-report
         cp -r ${{ github.workspace }}/playwright-report/* generated-report/
 
-    - name: Deploy to GitHub Pages
+    - name: Publish HTML report
+      if: always()
       uses: crazy-max/ghaction-github-pages@v2
-      if: success()  # Only deploy if previous steps were successful
       with:
-        branch: gh-pages  # The branch the action should deploy to.
-        folder: generated-report  # The folder the action should deploy.
+          target_branch: gh-pages
+          build_dir: generated-report
