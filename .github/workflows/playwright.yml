@@ -24,7 +24,7 @@ jobs:
       run: npm ci  # Install dependencies including Playwright
 
     - name: Run Playwright tests
-      run: npm run test:stg collection.test.ts  # Replace with your test script
+      run: npm run test:stg campaignCreate.test.ts  # Replace with your test script
 
     
     - name: copy contents of playwright-report
