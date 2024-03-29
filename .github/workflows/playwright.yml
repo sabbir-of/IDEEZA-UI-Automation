@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can specify the OS here
+    runs-on: windows-2019  # You can specify the OS here
 
     steps:
     - uses: actions/checkout@v2  # Checks-out your repository
